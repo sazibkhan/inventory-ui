@@ -1,0 +1,47 @@
+<div class="brand-update-container">
+  <h2>Update Brand</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="loading" class="loading-spinner">
+    Loading Brand data...
+  </div>
+
+  <form [formGroup]="brandForm" (ngSubmit)="onSubmit()" *ngIf="!loading">
+    <div class="form-group">
+      <label for="brandName">Brand Name</label>
+      <input
+        type="text"
+        id="brandName"
+        formControlName="brandName"
+        placeholder="Enter Brand name"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': f['brandName'].touched && f['brandName'].invalid }"
+      />
+
+      <div class="invalid-feedback" *ngIf="f['brandName'].touched && f['brandName'].errors">
+        <small *ngIf="f['brandName'].errors['required']">Brand name is required.</small>
+        <small *ngIf="f['brandName'].errors['minlength']">
+          Minimum 3 characters required.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        id="enabled"
+        formControlName="enabled"
+        class="form-check-input"
+      />
+      <label class="form-check-label" for="enabled">Enabled</label>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="loading">Update</button>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>

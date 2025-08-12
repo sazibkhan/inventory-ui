@@ -1,0 +1,36 @@
+<div class="container my-4">
+  <h2 class="text-center mb-4">Brand List</h2>
+
+    <a href="#" routerLink="/brand-save" class="btn btn-success">Create New Brand</a>
+    
+
+  <table class="table table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Id.</th>
+        <th scope="col">Brand Name</th>
+        <th scope="col">Enabled</th>
+        <th scope="col" style="width: 150px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let brand of brands">
+        <td>{{ brand.id }}</td>
+        <td>{{ brand.brandName }}</td>
+        <td>{{ brand.enabled }}</td>
+
+        <td>
+          <button class="btn btn-primary btn-sm me-2" [routerLink]="['/brand-update',brand.id]">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteBrand(brand.id)">Delete</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+
+</div>
