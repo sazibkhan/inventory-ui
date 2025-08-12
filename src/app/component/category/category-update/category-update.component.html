@@ -1,0 +1,47 @@
+<div class="brand-update-container">
+  <h2>Update Brand</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="loading" class="loading-spinner">
+    Loading Brand data...
+  </div>
+
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" *ngIf="!loading">
+    <div class="form-group">
+      <label for="categoryName">Category Name</label>
+      <input
+        type="text"
+        id="categoryName"
+        formControlName="categoryName"
+        placeholder="Enter category name"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': f['categoryName'].touched && f['categoryName'].invalid }"
+      />
+
+      <div class="invalid-feedback" *ngIf="f['categoryName'].touched && f['categoryName'].errors">
+        <small *ngIf="f['categoryName'].errors['required']">Brand name is required.</small>
+        <small *ngIf="f['categoryName'].errors['minlength']">
+          Minimum 3 characters required.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        id="enabled"
+        formControlName="enabled"
+        class="form-check-input"
+      />
+      <label class="form-check-label" for="enabled">Enabled</label>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="loading">Update</button>
+<!--      <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>-->
+    </div>
+  </form>
+</div>

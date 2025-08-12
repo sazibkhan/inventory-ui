@@ -1,0 +1,25 @@
+<div class="container my-4">
+  <h3 class="text-center mb-3">Create Category</h3>
+
+  <form (ngSubmit)="saveCategory()" #categoryForm="ngForm" class="mx-auto" style="max-width: 500px;">
+
+    <div class="mb-3">
+      <label for="categoryName" class="form-label">Category Name</label>
+      <input type="text" id="categoryName" name="categoryName"
+             class="form-control" placeholder="Enter category name" [(ngModel)]="categoryName" required />
+    </div>
+
+    <div class="form-check mb-3">
+      <input type="checkbox" id="enabled" name="enabled"
+             class="form-check-input" [(ngModel)]="enabled" />
+      <label for="enabled" class="form-check-label">Enabled</label>
+    </div>
+
+    <button
+      type="submit" class="btn btn-success w-100"
+      [disabled]="categoryForm.invalid"> Save Category </button>
+
+  </form>
+
+  <p class="text-success mt-3 text-center" *ngIf="message">{{ message }}</p>
+</div>

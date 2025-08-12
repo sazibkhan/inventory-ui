@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrandService } from '../../../service/brand.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,8 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './brand-update.component.html',
   styleUrl: './brand-update.component.scss'
 })
-export class BrandUpdateComponent {
-  
+export class BrandUpdateComponent implements  OnInit{
+
   brandForm!: FormGroup;
   loading = false;
   errorMessage = '';
@@ -71,14 +71,14 @@ onSubmit(): void {
    const brandData = this.brandForm.value;
 
     this.brandService.updateBrand(
-      this.bransId, 
-      brandData.brandName, 
+      this.bransId,
+      brandData.brandName,
       brandData.enabled
     ).subscribe(res=>{
    // alert('Merchant updated successfully!');
     this.router.navigate(['/brand-list']);
     })
-    
+
   }
 
   onCancel(): void {

@@ -49,6 +49,6 @@ deleteBrand(id:any) {
      this.loadBrands();
   });
 }
-  
+
 
 }

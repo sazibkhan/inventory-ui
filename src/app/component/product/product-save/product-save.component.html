@@ -1,0 +1,81 @@
+<div class="container my-4">
+  <h3 class="text-center mb-3">Create Product</h3>
+
+  <form (ngSubmit)="saveProduct()" #productForm="ngForm" class="mx-auto" style="max-width: 500px;">
+
+    <!-- Product Name -->
+    <div class="mb-3">
+      <label for="productName" class="form-label">Product Name</label>
+      <input type="text" id="productName" name="productName"
+        class="form-control" placeholder="Enter Product name"
+        [(ngModel)]="product.productName" required />
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea id="description" name="description"
+        class="form-control" placeholder="Enter product description"
+        [(ngModel)]="product.description"></textarea>
+    </div>
+
+    <!-- Barcode -->
+    <div class="mb-3">
+      <label for="barCode" class="form-label">Bar Code</label>
+      <input type="text" id="barCode" name="barCode"
+        class="form-control" placeholder="Enter barcode"
+        [(ngModel)]="product.barCode" />
+    </div>
+
+    <!-- Brand -->
+    <div class="mb-3">
+      <label for="brandId" class="form-label">Brand</label>
+      <select id="brandId" name="brandId" class="form-select" [(ngModel)]="product.brandId" required>
+        <option *ngFor="let b of brands" [value]="b.id">{{ b.brandName }}</option>
+      </select>
+    </div>
+
+    <!-- Category -->
+    <div class="mb-3">
+      <label for="categoryId" class="form-label">Category</label>
+      <select id="categoryId" name="categoryId" class="form-select" [(ngModel)]="product.categoryId" required>
+        <option *ngFor="let c of categories" [value]="c.id">{{ c.categoryName }}</option>
+      </select>
+    </div>
+
+    <!-- Purchase Price -->
+    <div class="mb-3">
+      <label for="purchasePrice" class="form-label">Purchase Price</label>
+      <input type="number" id="purchasePrice" name="purchasePrice"
+        class="form-control" [(ngModel)]="product.purchasePrice" />
+    </div>
+
+    <!-- Sales Price -->
+    <div class="mb-3">
+      <label for="salesPrice" class="form-label">Sales Price</label>
+      <input type="number" id="salesPrice" name="salesPrice"
+        class="form-control" [(ngModel)]="product.salesPrice" />
+    </div>
+
+    <!-- Discount -->
+    <div class="mb-3">
+      <label for="discountAmount" class="form-label">Discount Amount</label>
+      <input type="number" id="discountAmount" name="discountAmount"
+        class="form-control" [(ngModel)]="product.discountAmount" />
+    </div>
+
+    <!-- Enabled -->
+    <div class="form-check mb-3">
+      <input type="checkbox" id="enabled" name="enabled"
+        class="form-check-input" [(ngModel)]="product.enabled" />
+      <label for="enabled" class="form-check-label">Enabled</label>
+    </div>
+
+    <!-- Save Button -->
+    <button type="submit" class="btn btn-success w-100" [disabled]="productForm.invalid">
+      Save Product
+    </button>
+  </form>
+
+  <p class="text-success mt-3 text-center" *ngIf="message">{{ message }}</p>
+</div>
