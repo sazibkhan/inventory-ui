@@ -6,20 +6,23 @@ import {CategorySaveComponent} from "./component/category/category-save/category
 import {CategoryListComponent} from "./component/category/category-list/category-list.component";
 import {CategoryUpdateComponent} from "./component/category/category-update/category-update.component";
 import {ProductSaveComponent} from "./component/product/product-save/product-save.component";
+import {RegistrationSaveComponent} from "./component/registration/registration-save/registration-save.component";
 
 export const routes: Routes = [
-
+     // brand
     {path:'brand-save',component:BrandSaveComponent},
     {path:'brand-list',component:BrandListComponent},
     {path:'brand-update/:id',component:BrandUpdateComponent},
-
+     // category
      {path:'category-save',component:CategorySaveComponent},
      {path:'category-list',component:CategoryListComponent},
      {path:'category-update/:id',component:CategoryUpdateComponent},
 
+     // product
      {path:'product-save',component:ProductSaveComponent},
 
-
+    // registration
+  {path:'reg-save',component:RegistrationSaveComponent},
 
 
 
